@@ -19,7 +19,7 @@ Application::~Application()
 
 void Application :: event_loop()
 {
-    gout.open(450,400);
+    gout.open(450,450);
     event ev;
 
     while(gin >> ev && ev.keycode != key_escape )
@@ -29,7 +29,7 @@ void Application :: event_loop()
         {
             for (size_t i=0;i<widgets.size();i++)
             {
-                if (widgets[i]->is_selected(ev.pos_x, ev.pos_y))
+                if(widgets[i]->is_selected(ev.pos_x, ev.pos_y)==true)
                 {
                         focus = i;
                 }
@@ -41,18 +41,16 @@ void Application :: event_loop()
             widgets[focus]->handle(ev);
         }
 
-
-
-        if(ev.type == ev_mouse){
-                m_x = ev.pos_x;
-                m_y = ev.pos_y;
-            }
-            else{
-                ev.pos_x = m_x;
-                ev.pos_y = m_y;
-            }
-
-
+        if(ev.type == ev_mouse)
+        {
+            m_x = ev.pos_x;
+            m_y = ev.pos_y;
+        }
+        else
+        {
+            ev.pos_x = m_x;
+            ev.pos_y = m_y;
+        }
 
         for (Widget * w : widgets)
         {

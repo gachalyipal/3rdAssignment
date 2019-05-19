@@ -13,9 +13,7 @@ public:
     virtual bool is_selected(int mouse_x, int mouse_y);
     virtual int get_x();
     virtual int get_y();
-    virtual int get_size_x();
-    virtual int get_size_y();
-    virtual std::string value(){};
+  //  virtual std::string value(){};
 
 };
 
