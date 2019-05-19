@@ -15,7 +15,7 @@ public:
     virtual int get_y();
     virtual int get_size_x();
     virtual int get_size_y();
-         virtual std::string value(){};
+    virtual std::string value(){};
 
 };
 

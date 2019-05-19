@@ -4,11 +4,12 @@
 
 using namespace genv;
 
-Button::Button(int x, int y, int sx, int sy,  string text, function <void()>_funk)
-    : Widget(x,y,sx,sy)
+Button::Button(int x, int y, int sx, int sy,  string text, void* _parent, function <void(Button*)>_funk): Widget(x,y,sx,sy),str(text),parent(_parent),funk(_funk)
 {
+    /*
     funk=_funk;
     str=text;
+    */
     _focused=false;
     on_clicked=false;
 }
@@ -36,14 +37,19 @@ void Button::handle(event ev)
         {
             on_clicked=true;
             _focused=true;
-            funk();
+            funk(this);
         }
         else
         {
             _focused=false;
+            on_clicked=false;
         }
     }
+}
 
+void Button::set_value(std::string _text)
+{
+    str = _text;
 }
 bool Button::is_focused()
 {
