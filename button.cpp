@@ -13,19 +13,10 @@ Button::Button(int x, int y, int sx, int sy,  std::string text, void* _parent, s
 }
 void Button::draw()
 {
-
-    if (_focused==true)
-    {
-        gout <<  color(0,255,0);
-    }
-    else
-    {
-        gout <<color(255,255,255);
-    }
-
+    gout <<color(255,255,255);
     gout << move_to(_x, _y) << box(_size_x, _size_y);
     gout << move_to(_x+2, _y+2) << color(0,0,0) << box(_size_x-4, _size_y-4);
-    gout << color(255,255,255)<<move_to(_x+5,_y+_size_y/2+2)<< text(str);
+    gout << color(255,255,255)<<move_to(_x+5,_y+_size_y/2+3)<< text(str);
 }
 
 void Button::handle(event ev)
